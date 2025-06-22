@@ -54,11 +54,7 @@ public class CursoController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarCurso(@PathVariable int id){
-        if (cursoService.eliminarxid(id)){
+        cursoService.eliminarxid(id);
             return ResponseEntity.noContent().build();
-        }
-        else {
-            return ResponseEntity.notFound().build();
-        }
     }
 }

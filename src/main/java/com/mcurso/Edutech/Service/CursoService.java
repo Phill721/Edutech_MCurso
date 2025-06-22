@@ -1,5 +1,6 @@
 package com.mcurso.Edutech.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,12 @@ public class CursoService {
         return cursoRepository.findById(id);
     }
 
+    public List<Curso> listar(){
+        return cursoRepository.findAll();
+    }
+
     public Optional<Curso> actualizarCurso(int id, Curso updatedCurso){
         return cursoRepository.findById(id).map(curso -> {
-            curso.setId(id);
             curso.setTitulo(updatedCurso.getTitulo());
             curso.setDescripcion(updatedCurso.getDescripcion());
             curso.setCategoria(updatedCurso.getCategoria());
@@ -36,13 +40,7 @@ public class CursoService {
         } );
     }
 
-    public boolean eliminarxid(int id){
-        if (cursoRepository.existsById(id)){
-            cursoRepository.deleteById(id);
-            return true;
-        }
-        else {
-            return false;
-        }
+    public void eliminarxid(int id){
+        cursoRepository.deleteById(id);
     }
 }
