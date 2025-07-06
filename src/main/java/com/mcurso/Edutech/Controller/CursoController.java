@@ -30,12 +30,9 @@ public class CursoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(newCurso);
     }
 
-    @Autowired
-    private CursoRepository cursoRepository;
-
     @GetMapping
     public List<Curso> listar(){
-        return cursoRepository.findAll();
+        return cursoService.listar();
     }
 
     @GetMapping("/{id}")
